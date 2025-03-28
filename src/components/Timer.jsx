@@ -28,12 +28,12 @@ function Timer() {
     };
 
     return (
-        <div className="p-6 bg-gray-100 rounded shadow-md max-w-xs mx-auto">
-            <div className="p-6 bg-white rounded-xl shadow-2xl border border-blue-100 w-full max-w-sm transform transition-all duration-300 hover:scale-105">
-                <h3 className="text-2xl font-extrabold text-center mb-4 text-blue-900">
+        <div className="p-4 sm:p-6 bg-gray-100 rounded shadow-md max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+            <div className="p-4 sm:p-6 bg-white rounded-xl shadow-2xl border border-blue-100 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-center mb-2 sm:mb-4 text-blue-900">
                     Timer
                 </h3>
-                <div className="text-5xl font-bold text-center mb-6 text-gray-800">
+                <div className="text-3xl sm:text-5xl font-bold text-center mb-4 sm:mb-6 text-gray-800">
                     {formatTime()}
                 </div>
                 <div className="flex justify-center space-x-3">

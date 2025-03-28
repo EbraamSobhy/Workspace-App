@@ -66,29 +66,29 @@ function Notes() {
     );
 
     return (
-        <div className="max-w-xs mx-auto bg-blue-50 shadow-xl rounded-xl overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4">
+        <div className="max-w-xs mx-auto bg-blue-50 shadow-xl rounded-xl overflow-hidden sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+            <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4 sm:p-6">
                 <h1 className="text-2xl font-bold text-white text-center">
                     Notes
                 </h1>
                 <div className="mt-2">
-                    <input 
+                    <input
                         type="text"
                         placeholder="Search notes..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full px-3 py-1 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/40 text-sm"
+                        className="w-full px-3 py-1 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/40 text-sm sm:text-base"
                     />
                 </div>
             </div>
 
-            <div className="p-4">
+            <div className="p-4 sm:p-6">
                 <div className="mb-4">
                     <textarea
                         value={noteInput}
                         onChange={(e) => setNoteInput(e.target.value)}
                         placeholder="Write a note..."
-                        className="w-full px-3 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2 resize-none text-sm"
+                        className="w-full px-10 py-5 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2 resize-none text-sm sm:text-base"
                         rows={3}
                     />
                     <div className="flex space-x-2">
@@ -96,13 +96,13 @@ function Notes() {
                             <>
                                 <button 
                                     onClick={handleAddNote}
-                                    className="flex-1 bg-blue-500 text-white py-1 rounded-lg flex items-center justify-center hover:bg-blue-600 transition text-sm"
+                                    className="flex-1 bg-blue-500 text-white py-1 rounded-lg flex items-center justify-center hover:bg-blue-600 transition text-sm sm:text-base"
                                 >
                                     <Save className="mr-1" size={16} /> Update
                                 </button>
                                 <button 
                                     onClick={cancelEdit}
-                                    className="flex-1 bg-gray-300 text-gray-700 py-1 rounded-lg flex items-center justify-center hover:bg-gray-400 transition text-sm"
+                                    className="flex-1 bg-gray-300 text-gray-700 py-1 rounded-lg flex items-center justify-center hover:bg-gray-400 transition text-sm sm:text-base"
                                 >
                                     <X className="mr-1" size={16} /> Cancel
                                 </button>
@@ -110,7 +110,7 @@ function Notes() {
                         ) : (
                             <button 
                                 onClick={handleAddNote}
-                                className="w-full bg-blue-500 text-white py-2 rounded-lg flex items-center justify-center hover:bg-blue-600 transition"
+                                className="w-full bg-blue-500 text-white py-2 rounded-lg flex items-center justify-center hover:bg-blue-600 transition sm:text-base"
                                 disabled={!noteInput.trim()}
                             >
                                 <Plus className="mr-2" size={18} /> Add Note
@@ -120,20 +120,20 @@ function Notes() {
                 </div>
 
                 {filteredNotes.length === 0 ? (
-                    <div className="text-center text-blue-500 italic py-4">
+                    <div className="text-center text-blue-500 italic py-4 sm:py-6">
                         {searchTerm ? "No notes match your search" : "No notes yet. Start adding some!"}
                     </div>
                 ) : (
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 sm:space-y-3">
                         {filteredNotes.map((note, index) => {
                             const noteText = typeof note === 'string' ? note : note.text;
                             return (
                                 <li 
                                     key={index} 
-                                    className="bg-blue-100 rounded-lg p-3 flex justify-between items-center hover:bg-blue-200 transition"
+                                    className="bg-blue-100 rounded-lg p-3 flex justify-between items-center hover:bg-blue-200 transition sm:p-4"
                                 >
                                     <span className="flex-grow mr-2 text-sm truncate">{noteText}</span>
-                                    <div className="flex space-x-1">
+                                    <div className="flex space-x-1 sm:space-x-2">
                                         <button 
                                             onClick={() => handleEditNote(index)}
                                             className="text-blue-500 hover:text-blue-700 transition"
@@ -156,21 +156,21 @@ function Notes() {
 
             {showDeleteConfirm.show && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-xl shadow-2xl p-6 max-w-xs w-full">
+                    <div className="bg-white rounded-xl shadow-2xl p-6 max-w-xs w-full sm:max-w-sm">
                         <h2 className="text-lg font-semibold mb-3 text-center">Confirm Deletion</h2>
                         <p className="text-center mb-4 text-gray-600 text-sm">
                             Are you sure you want to delete this note?
                         </p>
-                        <div className="flex space-x-3">
+                        <div className="flex space-x-3 sm:space-x-4">
                             <button 
                                 onClick={confirmDeleteNote}
-                                className="flex-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition text-sm"
+                                className="flex-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition text-sm sm:text-base"
                             >
                                 Delete
                             </button>
                             <button 
                                 onClick={() => setShowDeleteConfirm({ show: false, index: null })}
-                                className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition text-sm"
+                                className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition text-sm sm:text-base"
                             >
                                 Cancel
                             </button>
